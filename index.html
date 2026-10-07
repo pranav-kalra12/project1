@@ -1,0 +1,220 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pranav Kalra | Equity Factor Screening Project</title>
+<meta name="description" content="Independent equity research project: a quality, growth and momentum screen of US technology stocks, with fundamental review of the highest and lowest ranked names.">
+<style>
+:root{--ink:#1a1a1a;--muted:#5b5f66;--rule:#c9ccd1;--navy:#14284b;--bg:#ffffff;--band:#f3f4f6;--pos:#1d6b3f;--neg:#9b2c2c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#e8e8e6;--muted:#a0a5ad;--rule:#33373f;--navy:#9db6e0;--bg:#14161a;--band:#1b1e24;--pos:#58b985;--neg:#e58383}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 Georgia,"Times New Roman",serif}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+a{color:var(--navy)}
+.sans{font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+header{border-bottom:3px solid var(--navy);padding:56px 0 28px}
+header .kicker{font:600 12px system-ui,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.2;margin:10px 0 12px;color:var(--navy);font-weight:700}
+header p.sub{margin:0 0 14px;color:var(--muted);font-size:18px}
+.contact{font:14px/1.6 system-ui,Arial,sans-serif;color:var(--muted)}
+.contact b{color:var(--ink)}
+nav{border-bottom:1px solid var(--rule);background:var(--bg);position:sticky;top:0;z-index:5}
+nav .wrap{display:flex;gap:22px;overflow-x:auto;white-space:nowrap;padding:12px 24px;font:13.5px system-ui,Arial,sans-serif}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--navy);text-decoration:underline}
+section{padding:36px 0 8px}
+h2{font-size:21px;color:var(--navy);margin:0 0 12px;padding-bottom:6px;border-bottom:1px solid var(--rule)}
+h3{font-size:17px;margin:24px 0 6px}
+p{margin:0 0 14px}
+.summary{background:var(--band);border-left:3px solid var(--navy);padding:16px 20px;margin:28px 0 0}
+.summary p{margin:0 0 8px}.summary p:last-child{margin:0}
+.eq{font:15px/1.5 "Cambria Math",Cambria,Georgia,serif;font-style:italic;padding:10px 16px;margin:8px 0 16px;background:var(--band);overflow-x:auto}
+table{border-collapse:collapse;width:100%;font:14px system-ui,Arial,sans-serif}
+caption{caption-side:top;text-align:left;font:600 13px system-ui,Arial,sans-serif;color:var(--muted);padding:0 0 6px}
+th,td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--rule);white-space:nowrap}
+th{font-weight:600;border-top:2px solid var(--navy);border-bottom:1px solid var(--navy);background:var(--band)}
+th:first-child,td:first-child,.l{text-align:left}
+.box{overflow-x:auto;margin:6px 0 18px}
+.scroll{max-height:440px;overflow:auto;border:1px solid var(--rule)}
+.scroll th{position:sticky;top:0;cursor:pointer}
+.pos{color:var(--pos)}.neg{color:var(--neg)}
+.note{font:13px/1.5 system-ui,Arial,sans-serif;color:var(--muted);margin:-8px 0 18px}
+.controls{font:14px system-ui,Arial,sans-serif;margin:10px 0}
+input[type=search]{font:inherit;padding:6px 10px;border:1px solid var(--rule);background:var(--bg);color:var(--ink);width:200px;margin-right:10px}
+.chart svg{width:100%;height:auto;display:block}
+ul{padding-left:22px;margin:0 0 14px}li{margin-bottom:7px}
+dl{margin:0 0 14px}dt{font-weight:700;margin-top:12px}dd{margin:2px 0 0}
+.status{font:600 12px system-ui,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);padding:2px 8px;margin-left:8px;vertical-align:middle}
+#tip{position:fixed;pointer-events:none;background:#1a1a1a;color:#fff;font:12.5px system-ui,Arial,sans-serif;padding:6px 9px;opacity:0;z-index:20}
+footer{margin-top:40px;border-top:1px solid var(--rule);padding:18px 0 48px;font:13px/1.6 system-ui,Arial,sans-serif;color:var(--muted)}
+@media print{nav,.controls{display:none}.scroll{max-height:none}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <div class="kicker">Independent Research Project</div>
+  <h1>A Quality, Growth and Momentum Screen of US Technology Equities</h1>
+  <p class="sub">Construction of a transparent multi-factor ranking model, and a fundamental review of its highest and lowest ranked names</p>
+  <div class="contact"><b>Pranav Kalra</b>, Rotman Commerce, University of Toronto (Class of 2028) &nbsp;|&nbsp; <a href="mailto:pranav.kalra@mail.utoronto.ca">pranav.kalra@mail.utoronto.ca</a> &nbsp;|&nbsp; <a href="https://linkedin.com/in/pranavk12" target="_blank" rel="noopener">linkedin.com/in/pranavk12</a></div>
+</div></header>
+
+<nav><div class="wrap">
+  <a href="#summary">Summary</a><a href="#universe">Universe</a><a href="#method">Methodology</a><a href="#results">Results</a><a href="#review">Fundamental Review</a><a href="#limits">Limitations</a><a href="#files">Code and Data</a><a href="#about">About</a>
+</div></nav>
+
+<main class="wrap">
+
+<section id="summary">
+  <h2>1. Summary</h2>
+  <p>I wanted to see how far a simple, fully disclosed factor model could go in ranking US technology stocks, and just as importantly, where it would get things wrong. The model scores every stock on three measures (gross margin, size-adjusted revenue growth and six-month price momentum), converts each to a Z-score and adds them with equal weights.</p>
+  <p>Ranking the stocks was the easy part. The harder question, which is the focus of the second phase, is whether the names at the top and bottom of the list deserve their positions once their financial statements and recent developments are examined.</p>
+  <div class="summary sans" style="font-size:15px">
+    <p><b>Universe:</b> 83 US technology companies above $100 million in market capitalisation; 81 scored.</p>
+    <p><b>Top five:</b> SNDK, ALAB, CRWV, TEAM, ARM. <b>Bottom five:</b> ACN, SNEJF, XIACY, HNHPF, SSNLF.</p>
+    <p><b>Status:</b> Quantitative model complete. Fundamental review of the ten names above is in progress.</p>
+  </div>
+  <p class="note" style="margin-top:12px">This is a cross-sectional snapshot, not a backtest, and it is not investment advice.</p>
+</section>
+
+<section id="universe">
+  <h2>2. Universe</h2>
+  <p>The universe comes from a Yahoo Finance equity screen with three criteria: US region, Technology sector, and market capitalisation above $100 million. The query was allowed to return up to 100 results, ordered by size. After removing duplicate listings of the same company, 83 names remained. That figure is the complete set of companies meeting the criteria at the time of the screen, not a sample.</p>
+  <p>Two of the 83 are recent listings without the 126 trading days of price history that the momentum factor requires. I excluded them rather than estimate their scores from partial data, which leaves <b>81 scored stocks</b>.</p>
+</section>
+
+<section id="method">
+  <h2>3. Methodology</h2>
+  <p>All three factors are computed for each stock, standardised across the universe, and summed. No weights were optimised.</p>
+
+  <h3>Momentum</h3>
+  <p>Six-month price return, with the most recent week removed from both endpoints. Skipping the latest week avoids short-term reversal, where a stock's last few days of movement tend to partly unwind rather than continue.</p>
+  <div class="eq">Momentum = P(t−5) / P(t−131) − 1</div>
+
+  <h3>Growth</h3>
+  <p>Year-over-year revenue growth, adjusted for company size. Raw growth favours small companies, since it is far easier to grow 50% from a $2 billion base than from $2 trillion. I regress growth on the log of market capitalisation across the universe and use the residual, so each stock is judged against what is typical for a company of its size. The slope is applied at half strength, because the full fitted line was too demanding for the largest names in a universe dominated by smaller companies.</p>
+  <div class="eq">Growth = g − [ mean(g) + 0.5 × slope × ( log10(MC) − mean(log10(MC)) ) ]</div>
+
+  <h3>Quality</h3>
+  <p>Gross margin, used as a simple indicator of how efficient and defensible the underlying business is.</p>
+  <div class="eq">Quality = Gross Profit / Revenue</div>
+
+  <h3>Composite score</h3>
+  <p>Each factor is converted to a Z-score so that a growth rate and a margin can be added meaningfully. Stocks are ranked on the sum.</p>
+  <div class="eq">Composite = Z(Quality) + Z(Growth) + Z(Momentum)</div>
+  <p class="note">Data: prices and income statements from Yahoo Finance via the yfinance library. Stocks with missing statement data are dropped, not filled with a neutral score.</p>
+</section>
+
+<section id="results">
+  <h2>4. Results</h2>
+  <p>The top of the ranking is driven largely by growth. SNDK, ALAB and CRWV each recorded raw revenue growth above 100%, and even after the size adjustment that tail is large enough to dominate the composite. ARM is a different case: it reaches the top five on Quality and Momentum alone, despite a slightly negative growth score. The bottom of the ranking is mostly thinly traded foreign OTC listings, where weak momentum and low gross margins compound each other.</p>
+
+  <div class="box"><table id="extremes"><caption>Table 1. Highest and lowest five composite scores (Z-scores)</caption></table></div>
+
+  <div class="chart box">
+    <svg id="distChart" viewBox="0 0 860 280" role="img" aria-label="Composite score by rank for all 81 stocks"></svg>
+    <p class="note">Figure 1. Composite score by rank, all 81 stocks. Top five in navy, bottom five in red. Hover over a bar for detail.</p>
+  </div>
+
+  <h3>Full ranking</h3>
+  <div class="controls"><input id="q" type="search" placeholder="Filter by ticker" aria-label="Filter by ticker">Click a column heading to sort.</div>
+  <div class="scroll box"><table id="full"></table></div>
+</section>
+
+<section id="review">
+  <h2>5. Fundamental Review <span class="status">In progress</span></h2>
+  <p>A quantitative screen only looks backward and cannot see context. The second phase therefore tests the top five and bottom five names against their financial statements and recent company developments, to determine whether each ranking reflects real business quality or a statistical artifact.</p>
+  <dl>
+    <dt>Top five (SNDK, ALAB, CRWV, TEAM, ARM)</dt>
+    <dd>Is the revenue growth recurring or a one-time event? Is the margin protected by a durable advantage? Has the price run-up left the stock expensive relative to peers? Is the balance sheet funding the growth sustainably?</dd>
+    <dt>Bottom five (ACN, SNEJF, XIACY, HNHPF, SSNLF)</dt>
+    <dd>Was the low score caused by a one-time charge, currency effect or weak quarter, or does it reflect a business in genuine difficulty? What is management guiding for next year?</dd>
+    <dt>Output</dt>
+    <dd>A verdict on each name (the model was right, partly right, or wrong), a count of how many were correct, and an explanation of the pattern behind any misses.</dd>
+  </dl>
+  <p class="note">Planned sources: SEC EDGAR filings, earnings call transcripts, multi-year trend data and peer valuation multiples. Findings will be added here once complete.</p>
+</section>
+
+<section id="limits">
+  <h2>6. Limitations</h2>
+  <ul>
+    <li><b>Backward-looking.</b> All three factors describe what has already happened.</li>
+    <li><b>Equal weights.</b> There is no empirical basis for treating the three factors as equally important.</li>
+    <li><b>No valuation input.</b> The model cannot separate a strong business from a strong business that is already expensive.</li>
+    <li><b>No balance sheet input.</b> A heavily leveraged company can score well if its income statement looks clean.</li>
+    <li><b>Point-in-time fundamentals.</b> Yahoo Finance supplies current financials, not historical snapshots, so this is not suitable for backtesting without further work.</li>
+    <li><b>Single-year growth.</b> One year of revenue growth is sensitive to one-off events. A three-year CAGR would be more stable.</li>
+    <li><b>Excluded listings.</b> Recent listings are dropped, so the model says nothing about them.</li>
+  </ul>
+  <p>The most useful extensions would be a valuation screen, a multi-year growth measure and a forward-looking backtest.</p>
+</section>
+
+<section id="files">
+  <h2>7. Code and Data</h2>
+  <p>The project is written in Python using pandas, NumPy and yfinance.</p>
+  <ul>
+    <li><a href="data/main.py">main.py</a>: universe screen, data collection and scoring</li>
+    <li><a href="data/factors.py">factors.py</a>: factor calculations, Z-scores and composite</li>
+    <li><a href="data/FactorScores.csv">FactorScores.csv</a>: output for all 81 scored stocks</li>
+  </ul>
+</section>
+
+<section id="about">
+  <h2>8. About the Author</h2>
+  <p>I study Finance and Economics (Specialist, Data Science focus) at the Rotman Commerce program at the University of Toronto. I spent the summer of 2023 as an Investment Banking Summer Analyst at Mercantile M&amp;A Corp, where I worked on sell-side mandates and built an Excel tracker that cut administrative follow-up time by 20%. I currently serve as Director of Treasury for the University of Toronto Student Research Initiative and as Vice President of the UTSG Cricket Club. This project grew out of managing a $10,000 family portfolio and wanting a more disciplined way to test my own ideas.</p>
+  <p class="sans" style="font-size:15px"><a href="mailto:pranav.kalra@mail.utoronto.ca">pranav.kalra@mail.utoronto.ca</a> &nbsp;|&nbsp; <a href="https://linkedin.com/in/pranavk12" target="_blank" rel="noopener">linkedin.com/in/pranavk12</a> &nbsp;|&nbsp; Toronto, Ontario</p>
+</section>
+
+</main>
+
+<footer><div class="wrap">This is an independent personal project using publicly available data. Nothing on this page constitutes investment advice.</div></footer>
+<div id="tip"></div>
+
+<script>
+const SCORES=[{"t":"SNDK","r":1,"m":1.176,"g":1.501,"q":0.715,"zm":1.26,"zg":4.91,"zq":0.85,"c":7.02},{"t":"ALAB","r":2,"m":0.981,"g":0.916,"q":0.757,"zm":0.93,"zg":3,"zq":1.06,"c":4.98},{"t":"CRWV","r":3,"m":-0.058,"g":1.447,"q":0.717,"zm":-0.85,"zg":4.73,"zq":0.86,"c":4.74},{"t":"TEAM","r":4,"m":1.492,"g":0.028,"q":0.848,"zm":1.81,"zg":0.09,"zq":1.52,"c":3.41},{"t":"ARM","r":5,"m":0.987,"g":-0.026,"q":0.975,"zm":0.94,"zg":-0.09,"zq":2.15,"c":3.01},{"t":"CRWD","r":6,"m":1.289,"g":-0.034,"q":0.747,"zm":1.46,"zg":-0.11,"zq":1.01,"c":2.35},{"t":"PANW","r":7,"m":1.24,"g":-0.008,"q":0.704,"zm":1.37,"zg":-0.02,"zq":0.79,"c":2.14},{"t":"MRVL","r":8,"m":1.423,"g":0.171,"q":0.51,"zm":1.69,"zg":0.56,"zq":-0.18,"c":2.07},{"t":"DDOG","r":9,"m":0.819,"g":0.038,"q":0.8,"zm":0.65,"zg":0.12,"zq":1.27,"c":2.05},{"t":"FTNT","r":10,"m":1.04,"g":-0.101,"q":0.805,"zm":1.03,"zg":-0.33,"zq":1.3,"c":2},{"t":"AMD","r":11,"m":1.565,"g":0.078,"q":0.495,"zm":1.93,"zg":0.25,"zq":-0.25,"c":1.93},{"t":"PLTR","r":12,"m":0.13,"g":0.305,"q":0.824,"zm":-0.53,"zg":1,"zq":1.39,"c":1.86},{"t":"DELL","r":13,"m":2.489,"g":-0.066,"q":0.2,"zm":3.52,"zg":-0.22,"zq":-1.73,"c":1.57},{"t":"NVDA","r":14,"m":0.161,"g":0.37,"q":0.711,"zm":-0.48,"zg":1.21,"zq":0.83,"c":1.56},{"t":"SNOW","r":15,"m":0.852,"g":0.049,"q":0.672,"zm":0.71,"zg":0.16,"zq":0.63,"c":1.5},{"t":"NET","r":16,"m":0.578,"g":0.056,"q":0.745,"zm":0.24,"zg":0.18,"zq":1,"c":1.42},{"t":"KXIAY","r":17,"m":1.208,"g":0.122,"q":0.433,"zm":1.32,"zg":0.4,"zq":-0.56,"c":1.16},{"t":"LNVGY","r":18,"m":2.308,"g":-0.032,"q":0.154,"zm":3.21,"zg":-0.1,"zq":-1.96,"c":1.14},{"t":"LITE","r":19,"m":0.343,"g":0.594,"q":0.417,"zm":-0.17,"zg":1.94,"zq":-0.65,"c":1.13},{"t":"MU","r":20,"m":1.101,"g":0.221,"q":0.398,"zm":1.14,"zg":0.72,"zq":-0.74,"c":1.12},{"t":"ATEYY","r":21,"m":0.264,"g":0.202,"q":0.643,"zm":-0.3,"zg":0.66,"zq":0.49,"c":0.85},{"t":"ADSK","r":22,"m":-0.093,"g":-0.057,"q":0.91,"zm":-0.91,"zg":-0.18,"zq":1.82,"c":0.72},{"t":"STX","r":23,"m":0.94,"g":0.092,"q":0.456,"zm":0.86,"zg":0.3,"zq":-0.45,"c":0.71},{"t":"WDAY","r":24,"m":0.427,"g":-0.101,"q":0.757,"zm":-0.02,"zg":-0.33,"zq":1.06,"c":0.71},{"t":"KYCCF","r":25,"m":0.275,"g":-0.139,"q":0.83,"zm":-0.28,"zg":-0.45,"zq":1.42,"c":0.69},{"t":"NOW","r":26,"m":0.235,"g":-0.035,"q":0.775,"zm":-0.35,"zg":-0.12,"zq":1.15,"c":0.68},{"t":"ADBE","r":27,"m":0.023,"g":-0.135,"q":0.893,"zm":-0.71,"zg":-0.44,"zq":1.74,"c":0.58},{"t":"ANET","r":28,"m":0.425,"g":0.035,"q":0.641,"zm":-0.02,"zg":0.12,"zq":0.47,"c":0.57},{"t":"HPE","r":29,"m":1.581,"g":-0.1,"q":0.303,"zm":1.96,"zg":-0.33,"zq":-1.22,"c":0.42},{"t":"CRM","r":30,"m":0.296,"g":-0.152,"q":0.777,"zm":-0.25,"zg":-0.5,"zq":1.16,"c":0.41},{"t":"CDNS","r":31,"m":-0.064,"g":-0.097,"q":0.864,"zm":-0.86,"zg":-0.32,"zq":1.59,"c":0.41},{"t":"WDC","r":32,"m":0.44,"g":0.111,"q":0.489,"zm":0,"zg":0.36,"zq":-0.29,"c":0.08},{"t":"TSM","r":33,"m":0.222,"g":0.041,"q":0.599,"zm":-0.37,"zg":0.13,"zq":0.27,"c":0.03},{"t":"MSFT","r":34,"m":0.248,"g":-0.102,"q":0.679,"zm":-0.33,"zg":-0.33,"zq":0.67,"c":0.01},{"t":"CSCO","r":35,"m":0.408,"g":-0.138,"q":0.645,"zm":-0.05,"zg":-0.45,"zq":0.5,"c":-0.01},{"t":"AVGO","r":36,"m":0.048,"g":-0.033,"q":0.678,"zm":-0.67,"zg":-0.11,"zq":0.66,"c":-0.12},{"t":"SNPS","r":37,"m":-0.137,"g":-0.086,"q":0.77,"zm":-0.99,"zg":-0.28,"zq":1.12,"c":-0.15},{"t":"SAP","r":38,"m":0.145,"g":-0.173,"q":0.729,"zm":-0.5,"zg":-0.57,"zq":0.92,"c":-0.16},{"t":"MRAAF","r":39,"m":1.051,"g":-0.19,"q":0.423,"zm":1.05,"zg":-0.62,"zq":-0.61,"c":-0.18},{"t":"INTU","r":40,"m":-0.267,"g":-0.099,"q":0.802,"zm":-1.21,"zg":-0.32,"zq":1.28,"c":-0.25},{"t":"QCOM","r":41,"m":0.465,"g":-0.112,"q":0.554,"zm":0.04,"zg":-0.37,"zq":0.04,"c":-0.28},{"t":"ADI","r":42,"m":0.169,"g":-0.078,"q":0.615,"zm":-0.46,"zg":-0.26,"zq":0.35,"c":-0.37},{"t":"TXN","r":43,"m":0.371,"g":-0.12,"q":0.57,"zm":-0.12,"zg":-0.39,"zq":0.12,"c":-0.39},{"t":"UMC","r":44,"m":1.322,"g":-0.213,"q":0.29,"zm":1.52,"zg":-0.7,"zq":-1.28,"c":-0.46},{"t":"GRMN","r":45,"m":0.198,"g":-0.083,"q":0.587,"zm":-0.41,"zg":-0.27,"zq":0.21,"c":-0.48},{"t":"APH","r":46,"m":0.139,"g":0.269,"q":0.369,"zm":-0.51,"zg":0.88,"zq":-0.89,"c":-0.52},{"t":"MPWR","r":47,"m":0.064,"g":0.028,"q":0.552,"zm":-0.64,"zg":0.09,"zq":0.03,"c":-0.52},{"t":"LRCX","r":48,"m":0.235,"g":0.005,"q":0.505,"zm":-0.35,"zg":0.02,"zq":-0.21,"c":-0.54},{"t":"KLAC","r":49,"m":0.171,"g":-0.133,"q":0.613,"zm":-0.46,"zg":-0.44,"zq":0.34,"c":-0.56},{"t":"ORCL","r":50,"m":-0.094,"g":-0.083,"q":0.658,"zm":-0.91,"zg":-0.27,"zq":0.56,"c":-0.62},{"t":"INTC","r":51,"m":1.123,"g":-0.266,"q":0.348,"zm":1.17,"zg":-0.87,"zq":-0.99,"c":-0.69},{"t":"TER","r":52,"m":0.117,"g":-0.104,"q":0.582,"zm":-0.55,"zg":-0.34,"zq":0.18,"c":-0.71},{"t":"KEYS","r":53,"m":0.096,"g":-0.155,"q":0.621,"zm":-0.59,"zg":-0.51,"zq":0.38,"c":-0.72},{"t":"SHOP","r":54,"m":0.026,"g":0.054,"q":0.481,"zm":-0.71,"zg":0.18,"zq":-0.33,"c":-0.86},{"t":"ASML","r":55,"m":0.161,"g":-0.105,"q":0.528,"zm":-0.48,"zg":-0.34,"zq":-0.09,"c":-0.91},{"t":"MSTR","r":56,"m":-0.121,"g":-0.206,"q":0.687,"zm":-0.96,"zg":-0.67,"zq":0.71,"c":-0.93},{"t":"IBM","r":57,"m":0.011,"g":-0.173,"q":0.582,"zm":-0.73,"zg":-0.56,"zq":0.18,"c":-1.12},{"t":"ADP","r":58,"m":0.341,"g":-0.174,"q":0.464,"zm":-0.17,"zg":-0.57,"zq":-0.41,"c":-1.14},{"t":"ASMIY","r":59,"m":0.11,"g":-0.15,"q":0.518,"zm":-0.56,"zg":-0.49,"zq":-0.14,"c":-1.2},{"t":"NXPI","r":60,"m":0.19,"g":-0.262,"q":0.547,"zm":-0.43,"zg":-0.86,"zq":0.01,"c":-1.28},{"t":"AAPL","r":61,"m":0.313,"g":-0.219,"q":0.469,"zm":-0.22,"zg":-0.72,"zq":-0.38,"c":-1.32},{"t":"AMAT","r":62,"m":0.219,"g":-0.211,"q":0.487,"zm":-0.38,"zg":-0.69,"zq":-0.3,"c":-1.36},{"t":"MSI","r":63,"m":0.002,"g":-0.157,"q":0.517,"zm":-0.75,"zg":-0.51,"zq":-0.15,"c":-1.41},{"t":"COHR","r":64,"m":0.096,"g":-0.01,"q":0.375,"zm":-0.59,"zg":-0.03,"zq":-0.86,"c":-1.48},{"t":"TELWY","r":65,"m":0.303,"g":-0.241,"q":0.453,"zm":-0.23,"zg":-0.79,"zq":-0.46,"c":-1.48},{"t":"PCRFF","r":66,"m":0.714,"g":-0.284,"q":0.314,"zm":0.47,"zg":-0.93,"zq":-1.16,"c":-1.62},{"t":"BSQKZ","r":67,"m":0.269,"g":-0.229,"q":0.428,"zm":-0.29,"zg":-0.75,"zq":-0.59,"c":-1.63},{"t":"CIEN","r":68,"m":-0.081,"g":-0.045,"q":0.42,"zm":-0.89,"zg":-0.15,"zq":-0.63,"c":-1.67},{"t":"NOKBF","r":69,"m":0.152,"g":-0.2,"q":0.435,"zm":-0.49,"zg":-0.65,"zq":-0.55,"c":-1.7},{"t":"GLW","r":70,"m":0.091,"g":-0.052,"q":0.36,"zm":-0.6,"zg":-0.17,"zq":-0.93,"c":-1.7},{"t":"IFNNY","r":71,"m":0.372,"g":-0.259,"q":0.392,"zm":-0.11,"zg":-0.85,"zq":-0.77,"c":-1.73},{"t":"UBER","r":72,"m":-0.043,"g":-0.061,"q":0.398,"zm":-0.83,"zg":-0.2,"zq":-0.74,"c":-1.77},{"t":"ASX","r":73,"m":0.742,"g":-0.158,"q":0.177,"zm":0.52,"zg":-0.52,"zq":-1.85,"c":-1.84},{"t":"STMEF","r":74,"m":0.532,"g":-0.343,"q":0.339,"zm":0.16,"zg":-1.12,"zq":-1.04,"c":-2},{"t":"TEL","r":75,"m":-0.002,"g":-0.146,"q":0.352,"zm":-0.76,"zg":-0.48,"zq":-0.97,"c":-2.2},{"t":"CLS","r":76,"m":0.171,"g":0.053,"q":0.121,"zm":-0.46,"zg":0.17,"zq":-2.13,"c":-2.42},{"t":"ACN","r":77,"m":-0.01,"g":-0.168,"q":0.319,"zm":-0.77,"zg":-0.55,"zq":-1.13,"c":-2.45},{"t":"SNEJF","r":78,"m":0.077,"g":-0.207,"q":0.308,"zm":-0.62,"zg":-0.68,"zq":-1.19,"c":-2.49},{"t":"XIACY","r":79,"m":-0.249,"g":0.011,"q":0.223,"zm":-1.18,"zg":0.03,"zq":-1.62,"c":-2.76},{"t":"HNHPF","r":80,"m":0.166,"g":-0.06,"q":0.061,"zm":-0.47,"zg":-0.2,"zq":-2.42,"c":-3.09},{"t":"SSNLF","r":81,"m":-0.955,"g":-0.147,"q":0.394,"zm":-2.39,"zg":-0.48,"zq":-0.76,"c":-3.64}];
+const $=s=>document.querySelector(s),NS='http://www.w3.org/2000/svg';
+const f2=(x,d=2)=>x.toFixed(d).replace('-','−');
+const cls=x=>x>0?'pos':x<0?'neg':'';
+const tip=$('#tip');
+function showTip(e,h){tip.innerHTML=h;tip.style.opacity=1;tip.style.left=Math.min(e.clientX+12,innerWidth-230)+'px';tip.style.top=(e.clientY+14)+'px'}
+function hideTip(){tip.style.opacity=0}
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+
+const rows=a=>a.map(s=>`<tr><td>${s.r}</td><td class="l"><b>${s.t}</b></td><td class="${cls(s.zq)}">${f2(s.zq)}</td><td class="${cls(s.zg)}">${f2(s.zg)}</td><td class="${cls(s.zm)}">${f2(s.zm)}</td><td><b>${f2(s.c)}</b></td></tr>`).join('');
+$('#extremes').insertAdjacentHTML('beforeend','<tr><th>Rank</th><th class="l">Ticker</th><th>Quality</th><th>Growth</th><th>Momentum</th><th>Composite</th></tr>'+rows(SCORES.slice(0,5))+'<tr><td colspan="6" style="text-align:center;color:var(--muted)">...</td></tr>'+rows(SCORES.slice(-5)));
+
+(function(){
+  const svg=$('#distChart'),W=860,H=280,m={l:36,r:8,t:8,b:34},n=SCORES.length;
+  const lo=Math.min(...SCORES.map(s=>s.c)),hi=Math.max(...SCORES.map(s=>s.c));
+  const y=v=>m.t+(hi-v)/(hi-lo)*(H-m.t-m.b),bw=(W-m.l-m.r)/n;
+  for(let v=Math.ceil(lo/2)*2;v<=hi;v+=2){el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--rule)'},svg);
+    el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end','font-size':11,fill:'var(--muted)'},svg).textContent=String(v).replace('-','−')}
+  el('line',{x1:m.l,x2:W-m.r,y1:y(0),y2:y(0),stroke:'var(--muted)'},svg);
+  SCORES.forEach((s,i)=>{
+    const col=i<5?'var(--navy)':i>=n-5?'var(--neg)':'var(--rule)';
+    const b=el('rect',{x:m.l+i*bw+.5,width:Math.max(bw-1,1),y:Math.min(y(s.c),y(0)),height:Math.abs(y(s.c)-y(0)),fill:col},svg);
+    b.addEventListener('mousemove',e=>showTip(e,`<b>#${s.r} ${s.t}</b><br>Composite ${f2(s.c)}<br>Q ${f2(s.zq)}, G ${f2(s.zg)}, M ${f2(s.zm)}`));
+    b.addEventListener('mouseleave',hideTip);
+    if(i<5||i>=n-5){const x=m.l+i*bw+bw/2;el('text',{x,y:H-14,'text-anchor':'middle','font-size':9,fill:'var(--muted)',transform:`rotate(-40 ${x} ${H-14})`},svg).textContent=s.t}
+  });
+})();
+
+(function(){
+  const cols=[['r','Rank'],['t','Ticker'],['m','6M Momentum'],['g','Growth (size-adj.)'],['q','Gross Margin'],['zm','Z Mom.'],['zg','Z Growth'],['zq','Z Quality'],['c','Composite']];
+  let key='r',dir=1,q='';
+  const pct=v=>f2(v*100,1)+'%';
+  function draw(){
+    const d=SCORES.filter(s=>s.t.toLowerCase().includes(q)).sort((a,b)=>(a[key]>b[key]?1:-1)*dir);
+    $('#full').innerHTML='<tr>'+cols.map(([k,l])=>`<th data-k="${k}" class="${k==='t'?'l':''}">${l}${k===key?(dir>0?' ▲':' ▼'):''}</th>`).join('')+'</tr>'+
+      d.map(s=>`<tr><td>${s.r}</td><td class="l"><b>${s.t}</b></td><td class="${cls(s.m)}">${pct(s.m)}</td><td class="${cls(s.g)}">${f2(s.g*100,1)} pp</td><td>${pct(s.q)}</td><td class="${cls(s.zm)}">${f2(s.zm)}</td><td class="${cls(s.zg)}">${f2(s.zg)}</td><td class="${cls(s.zq)}">${f2(s.zq)}</td><td><b>${f2(s.c)}</b></td></tr>`).join('');
+    document.querySelectorAll('#full th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;dir=k===key?-dir:(k==='t'||k==='r'?1:-1);key=k;draw()});
+  }
+  $('#q').addEventListener('input',e=>{q=e.target.value.trim().toLowerCase();draw()});
+  draw();
+})();
+</script>
+</body>
+</html>
+
